@@ -26,6 +26,7 @@ import android.Manifest;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.os.Build;
 import android.os.Environment;
 
 public class Downloader extends CordovaPlugin {
@@ -65,7 +66,7 @@ public class Downloader extends CordovaPlugin {
       downloadReceiverCallbackContext = callbackContext;
 
       if(action.equals("download")){
-          if(cordova.hasPermission(WRITE_EXTERNAL_STORAGE)){
+          if(cordova.hasPermission(WRITE_EXTERNAL_STORAGE) || Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
               download(args.getJSONObject(0), callbackContext);
           }
           else {
