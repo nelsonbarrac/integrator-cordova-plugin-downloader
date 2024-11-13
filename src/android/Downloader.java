@@ -87,7 +87,11 @@ public class Downloader extends CordovaPlugin {
 
     IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
 
-    webView.getContext().registerReceiver(downloadReceiver, intentFilter);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        webView.getContext().registerReceiver(downloadReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+    } else {
+        webView.getContext().registerReceiver(downloadReceiver, intentFilter);
+    }
 
     this.downloadId = downloadManager.enqueue(request);
       
