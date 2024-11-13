@@ -8,7 +8,7 @@ Installation
 --------
 
 ```bash
-cordova plugin add integrator-cordova-plugin-downloader
+cordova plugin add https://github.com/nelsonbarrac/integrator-cordova-plugin-downloader
 ```
 
 Usage
